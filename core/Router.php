@@ -70,4 +70,9 @@ class Router
     {
         return $this->baseUrl .'/'. $path;
     }
+    
+    public function asset($path)
+    {
+        return $this->baseUrl . '/public/' . ltrim($path, '/');
+    }
 }
