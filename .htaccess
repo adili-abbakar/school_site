@@ -1,0 +1,10 @@
+# Turn on rewrite engine
+RewriteEngine On
+
+# Set the base folder (adjust if your project folder name changes)
+RewriteBase /school_site/
+
+# If the request is not a real file or folder, send it to index.php
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^ index.php [L]
