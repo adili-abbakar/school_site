@@ -3,15 +3,25 @@ require_once __DIR__ . '/../core/Guard.php';
 Guard::protect(__FILE__);
 
 
-require_once __DIR__ . '/../app/controllers/AuthController.php';
-require_once __DIR__ . '/../app/controllers/DashboardController.php';
+spl_autoload_register(function ($class) {
+    $baseDir = __DIR__ . '/../app/controllers/';
+    $file = $baseDir . $class . '.php';
+    if (file_exists($file)) {
+        require_once $file;
+    }
+});
 
 $router = new Router();
 $auth = new AuthController();
-$dashboard = new DashboardController();
+$public  = new PublicController(); 
 
-// Dashboard
-$router->get('/', [$dashboard, 'index']);
+// public routes
+$router->get('/', [$public, 'showHome']);
+$router->get('/about', [$public, 'showAbout']);
+$router->get('/contact', [$public, 'showContact']);
+$router->get('/apply-admission', [$public, 'showApplyAdmission']);
+
+
 
 // Login
 $router->get('/login', [$auth, 'showLogin']);

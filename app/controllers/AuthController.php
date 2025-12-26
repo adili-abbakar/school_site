@@ -1,18 +1,20 @@
 <?php
 require_once __DIR__ . '/../models/User.php';
+require_once __DIR__ . '/../../core/Guard.php';
+Guard::protect(__FILE__);
 
 class AuthController
 {
     public function showLogin()
     {
         global $router;
-        include __DIR__ . '/../views/auth/login_form.php';
+        include __DIR__ . '/../views/auth/login.php';
     }
 
     public function showRegister()
     {
         global $router;
-        include __DIR__ . '/../views/auth/register_form.php';
+        include __DIR__ . '/../views/auth/register-form.php';
     }
 
     public function login()
@@ -80,7 +82,7 @@ class AuthController
     public function showForgotPassword()
     {
         global $router;
-        include __DIR__ . '/../views/auth/forgot_password.php';
+        include __DIR__ . '/../views/auth/forgot-password.php';
     }
 
     public function sendResetLink()
@@ -111,7 +113,7 @@ class AuthController
     {
         global $router;
         $token = $_GET['token'] ?? '';
-        include __DIR__ . '/../views/auth/reset_password.php';
+        include __DIR__ . '/../views/auth/reset-password.php';
     }
 
     public function resetPassword()

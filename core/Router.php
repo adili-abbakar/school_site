@@ -68,7 +68,7 @@ class Router
     //  Helper to generate URLs
     public function url($path)
     {
-        return $this->baseUrl .'/'. $path;
+        return $this->baseUrl . $path;
     }
     
     public function asset($path)
